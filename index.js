@@ -12,8 +12,6 @@ app.use(express.json( { extended: false } ))
 
 app.post('/Send', (req, res) => {
 
-    res.send('nani')
-
      const { email, subject } = req.body
 
      if (!/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i.test(email)) {
@@ -23,8 +21,8 @@ app.post('/Send', (req, res) => {
            let transporter = nodemailer.createTransport({
              service: 'gmail',
              auth: {
-               user: process.env.EMAIL,
-               pass: process.env.PASS
+               user: process.env.E_MAIL,
+               pass: process.env.PASS_
              }
            })
       
