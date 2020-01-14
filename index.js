@@ -12,7 +12,11 @@ app.use(express.json( { extended: false } ))
 
 app.post('/Send', (req, res) => {
 
-     const { email, subject } = req.body
+     const { email, subject, text } = req.body
+
+     if( subject.trim() === '' || text.trim() === '') {
+       res.status(400).json('Los campos no deben  estar vacíos. Por favor, intenta de nuevo')
+     }
 
      if (!/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i.test(email)) {
          res.status(400).json('E-mail Inválido, por favor, intenta de nuevo.')
